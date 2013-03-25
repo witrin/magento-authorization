@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <general>
+            <groups>
+                <store_authorization translate="label" module="authorization">
+                    <label>Store Authorization</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>340</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enable Authorization</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <allowed_customer_groups translate="label">
+                            <label>Allowed Customer Groups</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>authorization/adminhtml_config_source_customer_groups</source_model>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowed_customer_groups>
+                        <public_cms_pages translate="label">
+                            <label>Public CMS Pages</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>authorization/adminhtml_config_source_cms_pages</source_model>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </public_cms_pages>
+                        <public_urls translate="label,comment">
+                            <label>Public URLs</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Regular expression, e.g. '/customer\/account\/login.*/'.</comment>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </public_urls>
+                        <anonymous_customer_redirect translate="label">
+                            <label>Redirect Guests to</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>authorization/adminhtml_config_source_customer_redirect_types</source_model>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </anonymous_customer_redirect>
+                        <unauthorized_customer_redirect translate="label">
+                            <label>Redirect Banned Customers to</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>authorization/adminhtml_config_source_customer_redirect_types</source_model>
+                            <depends>
+                                <active>1</active>
+                            </depends>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </unauthorized_customer_redirect>
+                        <custom_redirect_url translate="label,comment">
+                            <label>Error URL</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Displayed when access is denied, e.g. 'customer/account/login'.<![CDATA[
+                                <script type="text/javascript">
+                                    var checkRedirectUrl = function() {
+                                        if ($('general_store_authorization_active').getValue() == 1 && ($('general_store_authorization_anonymous_customer_redirect').getValue() == 'custom'
+                                            || $('general_store_authorization_unauthorized_customer_redirect').getValue() == 'custom')) {
+                                            $('row_general_store_authorization_custom_redirect_url').show();
+                                        } else {
+                                            $('row_general_store_authorization_custom_redirect_url').hide();
+                                        }
+                                    }
+                                    
+                                    Event.observe(window, 'load', function() {
+                                        Event.observe('general_store_authorization_active', 'change', checkRedirectUrl);
+                                        Event.observe('general_store_authorization_anonymous_customer_redirect', 'change', checkRedirectUrl);
+                                        Event.observe('general_store_authorization_unauthorized_customer_redirect', 'change', checkRedirectUrl);
+                                        checkRedirectUrl();
+                                    })
+                                </script>
+                            ]]></comment>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_redirect_url>
+                        <error_page translate="label,comment">
+                            <label>Error Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>authorization/adminhtml_config_source_cms_pages</source_model>
+                            <comment>Displayed when access is denied.<![CDATA[
+                                <script type="text/javascript">
+                                    var checkRedirectPage = function() {
+                                        if ($('general_store_authorization_active').getValue() == 1 && ($('general_store_authorization_anonymous_customer_redirect').getValue() == 'page'
+                                            || $('general_store_authorization_unauthorized_customer_redirect').getValue() == 'page')) {
+                                            $('row_general_store_authorization_error_page').show();
+                                        } else {
+                                            $('row_general_store_authorization_error_page').hide();
+                                        }
+                                    }
+                                    
+                                    Event.observe(window, 'load', function() {
+                                    	Event.observe('general_store_authorization_active', 'change', checkRedirectPage);
+                                        Event.observe('general_store_authorization_anonymous_customer_redirect', 'change', checkRedirectPage);
+                                        Event.observe('general_store_authorization_unauthorized_customer_redirect', 'change', checkRedirectPage);
+                                        checkRedirectPage();
+                                    })
+                                </script>
+                            ]]></comment>
+                            <sort_order>63</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </error_page>
+                        <error_message translate="label,comment">
+                            <label>Error Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>Displayed only after redirect to login.</comment>
+                            <depends>
+                                <active>1</active>
+                                <anonymous_customer_redirect>login</anonymous_customer_redirect>
+                            </depends>
+                            <sort_order>64</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </error_message>
+                    </fields>
+                </store_authorization>
+            </groups>
+        </general>
+    </sections>
+</config>
