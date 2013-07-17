@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ionoi_Authorization>
-            <version>0.1.0</version>
+            <version>1.0.1</version>
         </Ionoi_Authorization>
     </modules>
     <global>
