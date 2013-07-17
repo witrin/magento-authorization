@@ -31,6 +31,8 @@ For customers and guests without the required permission, several redirect metho
 
 Please note that for the redirect method `Login` the field `Public Actions` must match at least for the login action, otherwise this results in a redirect-loop. A minimal example might be `/customer\/account\/(login|logoutSuccess)/`. A more extensive example, including password resets and account creations, might be `/customer\/account\/(index|login|forgotpassword|create|resetpassword|logoutSuccess)/`.
 
+For a redirect of the customer to the current page after logging in set `Redirect Customer to Account Dashboard after Logging in` to `No` under `System > Configuration > Customer Configuration > Login Options`.
+
 Contribution
 ------------
 
