@@ -72,8 +72,8 @@ class Ionoi_Authorization_Model_Observer
             $request = $action->getRequest();
             $path = $action->getFullActionName('/');
             
-            // user defined url are always allowed
-            $allowed = $helper->getPublicUrls();
+            // user defined actions are always allowed
+            $allowed = $helper->getPublicActions();
             if (preg_match($allowed, $path)) {
                 return;
             }

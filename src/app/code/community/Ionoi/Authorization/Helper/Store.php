@@ -30,7 +30,7 @@ class Ionoi_Authorization_Helper_Store extends Mage_Core_Helper_Abstract
     
     const XML_PATH_STORE_AUTHORIZATION_ERROR_PAGE = 'general/store_authorization/error_page';
     
-    const XML_PATH_STORE_AUTHORIZATION_PUBLIC_URLS = 'general/store_authorization/public_urls';
+    const XML_PATH_STORE_AUTHORIZATION_PUBLIC_ACTIONS = 'general/store_authorization/public_actions';
     
     const XML_PATH_STORE_AUTHORIZATION_CUSTOM_REDIRECT_URL = 'general/store_authorization/custom_redirect_url';
     
@@ -111,9 +111,9 @@ class Ionoi_Authorization_Helper_Store extends Mage_Core_Helper_Abstract
      * @param Mage_Core_Model_Store $store
      * @return array
      */
-    public function getPublicUrls($store = null)
+    public function getPublicActions($store = null)
     {
-        return (string)Mage::getStoreConfig(self::XML_PATH_STORE_AUTHORIZATION_PUBLIC_URLS, $store);
+        return (string)Mage::getStoreConfig(self::XML_PATH_STORE_AUTHORIZATION_PUBLIC_ACTIONS, $store);
     }
     
     /**

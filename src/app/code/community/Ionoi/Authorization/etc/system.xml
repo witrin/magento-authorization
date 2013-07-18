@@ -44,10 +44,10 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </public_cms_pages>
-                        <public_urls translate="label,comment">
-                            <label>Public URLs</label>
+                        <public_actions translate="label,comment">
+                            <label>Public Actions</label>
                             <frontend_type>text</frontend_type>
-                            <comment>Regular expression, e.g. '/customer\/account\/login.*/'.</comment>
+                            <comment>Accepts only regular expressions.</comment>
                             <depends>
                                 <active>1</active>
                             </depends>
@@ -55,7 +55,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </public_urls>
+                        </public_actions>
                         <anonymous_customer_redirect translate="label">
                             <label>Redirect Guests to</label>
                             <frontend_type>select</frontend_type>
@@ -83,7 +83,7 @@
                         <custom_redirect_url translate="label,comment">
                             <label>Error URL</label>
                             <frontend_type>text</frontend_type>
-                            <comment>Displayed when access is denied, e.g. 'customer/account/login'.<![CDATA[
+                            <comment>Displayed when access is denied.<![CDATA[
                                 <script type="text/javascript">
                                     var checkRedirectUrl = function() {
                                         if ($('general_store_authorization_active').getValue() == 1 && ($('general_store_authorization_anonymous_customer_redirect').getValue() == 'custom'
