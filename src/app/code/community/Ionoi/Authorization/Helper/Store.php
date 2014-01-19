@@ -99,7 +99,7 @@ class Ionoi_Authorization_Helper_Store extends Mage_Core_Helper_Abstract
     public function getPublicCmsPages($store = null)
     {
         $config = (string)Mage::getStoreConfig(self::XML_PATH_STORE_AUTHORIZATION_PUBLIC_CMS_PAGES, $store);
-        $result = array_map($this->_getPageIdentifier, explode(',', $config));
+        $result = array_map(array($this, '_getPageIdentifier'), explode(',', $config));
         $result[] = $this->getErrorPage($store);
         
         return $result;
